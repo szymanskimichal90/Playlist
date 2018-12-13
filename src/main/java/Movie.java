@@ -11,11 +11,10 @@ public class Movie implements Track {
     private String title;
     private String director;
 
+
     @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", director='" + director + '\'' +
-                '}';
+    public void play() {
+        System.out.println("MOVIE is plaing. Title: " + title + ", Director: " + director);
+
     }
 }

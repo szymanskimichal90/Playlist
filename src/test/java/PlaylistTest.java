@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 public class PlaylistTest {
 
-    Playlist mainPlst = new Playlist();
-    Playlist secondPlst = new Playlist();
+    Playlist mainPlst = new Playlist("Main playlist");
+    Playlist secondPlst = new Playlist("Second playlist");
     Track track1 = new Music("This Love", "ATB");
     Track track2 = new Music("Trójkąty i kwadraty", "Podsiadło");
     Track track3 = new Music("Majteczki w kropeczki", "Akcent");
@@ -35,7 +35,9 @@ public class PlaylistTest {
         mainPlst.addTrackToPlst(track5);
         mainPlst.addTrackToPlst(secondPlst);
 
-        secondPlst.playAsAdded();
-        mainPlst.playAsAdded();
+        secondPlst.play();
+
+        System.out.println("-------------");
+        mainPlst.play();
     }
 }

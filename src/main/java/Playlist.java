@@ -1,31 +1,34 @@
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
+@Getter
+@Setter
 
 public class Playlist implements Track {
-    @Getter
-    @Setter
-    private List<Track> playlist = new ArrayList<>();
+
+    public Playlist(String name) {
+        this.name = name;
+    }
+
+    private String name;
+    private Set<Track> playlist = new LinkedHashSet<Track>();
 
     void addTrackToPlst(Track track) {
         playlist.add(track);
     }
 
-    void playAsAdded (){
-        for (Track t:playlist
-             ) {
-            System.out.println(t);
 
-        }
-    }
 
     @Override
-    public String toString() {
-        return "Playlist{" +
-                "playlist=" + playlist +
-                '}';
+    public void play() {
+        System.out.println("You are listening whole playlist. Name:"+name);
+        for (Track t:playlist
+        ) {
+            t.play();
+
+        }
     }
 }

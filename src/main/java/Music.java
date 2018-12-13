@@ -1,6 +1,7 @@
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 @AllArgsConstructor
 
 public class Music implements Track {
@@ -11,10 +12,7 @@ public class Music implements Track {
     private String author;
 
     @Override
-    public String toString() {
-        return "Music{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                '}';
+    public void play() {
+        System.out.println("MUSIC is playing so loud. Singer: " + author + ", Title:" + title);
     }
 }
