@@ -15,24 +15,36 @@ public class Playlist implements Track {
 
     private String name;
     private List<Track> playlist = new ArrayList<>();
+    private List<Track> copyOfPlaylist = new ArrayList<>();
 
 
     void addTrackToPlst(Track track) {
+        copyOfPlaylist.add(track);
         playlist.add(track);
     }
 
+
     public void setHowToPlay(TypeOfPlay toPlay) {
+
         if (toPlay == TypeOfPlay.RANDOM) {
+            playlist = new ArrayList<>();
+            copyTrackToPlaylist();
             Collections.shuffle(playlist);
-        }
-        else if (toPlay == TypeOfPlay.LOOPED) {
-            playlist.add((Track) playlist);}
-           else if (toPlay == TypeOfPlay.SEQUENTIAL) {
-                Collections.unmodifiableList(playlist);
+        } else if (toPlay == TypeOfPlay.LOOPED) {
+            playlist = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                copyTrackToPlaylist();
             }
-
+        } else if (toPlay == TypeOfPlay.SEQUENTIAL) {
+            playlist = new ArrayList<>();
+            copyTrackToPlaylist();
         }
+    }
 
+    private void copyTrackToPlaylist() {
+        for (int j = 0; j < copyOfPlaylist.size(); j++) {
+            playlist.add(copyOfPlaylist.get(j));
+        }
     }
 
     @Override
